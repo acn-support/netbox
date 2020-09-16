@@ -4,12 +4,12 @@
 /netbox/netbox/ldap_config.py
 /netbox/reports/*
 !/netbox/reports/__init__.py
-/netbox/scripts/*
-!/netbox/scripts/__init__.py
+# /netbox/scripts/*
+# !/netbox/scripts/__init__.py
 /netbox/static
 /venv/
 /*.sh
-local_requirements.txt
+# local_requirements.txt
 !upgrade.sh
 fabfile.py
 gunicorn.py
@@ -18,4 +18,4 @@ netbox.pid
 .DS_Store
 .idea
 .coverage
-.vscode
+# .vscode
