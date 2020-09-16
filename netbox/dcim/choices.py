@@ -129,22 +129,22 @@ class DeviceFaceChoices(ChoiceSet):
 
 class DeviceStatusChoices(ChoiceSet):
 
-    STATUS_OFFLINE = 'offline'
-    STATUS_ACTIVE = 'active'
+    STATUS_INVENTORY = 'inventory'
     STATUS_PLANNED = 'planned'
     STATUS_STAGED = 'staged'
-    STATUS_FAILED = 'failed'
-    STATUS_INVENTORY = 'inventory'
+    STATUS_ACTIVE = 'active'
     STATUS_DECOMMISSIONING = 'decommissioning'
+    STATUS_OFFLINE = 'offline'
+    STATUS_FAILED = 'failed'
 
     CHOICES = (
-        (STATUS_OFFLINE, 'Offline'),
-        (STATUS_ACTIVE, 'Active'),
-        (STATUS_PLANNED, 'Planned'),
-        (STATUS_STAGED, 'Staged'),
-        (STATUS_FAILED, 'Failed'),
-        (STATUS_INVENTORY, 'Inventory'),
-        (STATUS_DECOMMISSIONING, 'Decommissioning'),
+        (STATUS_INVENTORY, 'На складе'), # 
+        (STATUS_PLANNED, 'Запланировано'),
+        (STATUS_STAGED, 'Ввод в работу'),
+        (STATUS_ACTIVE, 'В работе'),
+        (STATUS_DECOMMISSIONING, 'Вывод из работы'),
+        (STATUS_OFFLINE, 'Выключено'),
+        (STATUS_FAILED, 'Отказ'),
     )
 
 

@@ -24,10 +24,10 @@ class PrefixStatusChoices(ChoiceSet):
     STATUS_DEPRECATED = 'deprecated'
 
     CHOICES = (
-        (STATUS_CONTAINER, 'Container'),
-        (STATUS_ACTIVE, 'Active'),
-        (STATUS_RESERVED, 'Reserved'),
-        (STATUS_DEPRECATED, 'Deprecated'),
+        (STATUS_CONTAINER, 'Контейнер'),
+        (STATUS_ACTIVE, 'В работе'),
+        (STATUS_RESERVED, 'В резерве'),
+        (STATUS_DEPRECATED, 'Устарело'),
     )
 
 
@@ -44,9 +44,9 @@ class IPAddressStatusChoices(ChoiceSet):
     STATUS_SLAAC = 'slaac'
 
     CHOICES = (
-        (STATUS_ACTIVE, 'Active'),
-        (STATUS_RESERVED, 'Reserved'),
-        (STATUS_DEPRECATED, 'Deprecated'),
+        (STATUS_ACTIVE, 'В работе'),
+        (STATUS_RESERVED, 'В резерве'),
+        (STATUS_DEPRECATED, 'Устарело'),
         (STATUS_DHCP, 'DHCP'),
         (STATUS_SLAAC, 'SLAAC'),
     )
@@ -56,6 +56,7 @@ class IPAddressRoleChoices(ChoiceSet):
 
     ROLE_LOOPBACK = 'loopback'
     ROLE_SECONDARY = 'secondary'
+    # gateway broadcast
     ROLE_ANYCAST = 'anycast'
     ROLE_VIP = 'vip'
     ROLE_VRRP = 'vrrp'
@@ -86,9 +87,9 @@ class VLANStatusChoices(ChoiceSet):
     STATUS_DEPRECATED = 'deprecated'
 
     CHOICES = (
-        (STATUS_ACTIVE, 'Active'),
-        (STATUS_RESERVED, 'Reserved'),
-        (STATUS_DEPRECATED, 'Deprecated'),
+        (STATUS_ACTIVE, 'В работе'),
+        (STATUS_RESERVED, 'В резерве'),
+        (STATUS_DEPRECATED, 'Устарело'),
     )
 
 

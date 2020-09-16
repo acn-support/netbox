@@ -8,14 +8,14 @@
 # access to the server via any other hostnames. The first FQDN in the list will be treated as the preferred name.
 #
 # Example: ALLOWED_HOSTS = ['netbox.example.com', 'netbox.internal.local']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'netbox.wave']
 
 # PostgreSQL database configuration. See the Django documentation for a complete list of available parameters:
 #   https://docs.djangoproject.com/en/stable/ref/settings/#databases
 DATABASE = {
     'NAME': 'netbox',         # Database name
-    'USER': '',               # PostgreSQL username
-    'PASSWORD': '',           # PostgreSQL password
+    'USER': 'netbox',               # PostgreSQL username
+    'PASSWORD': 'netbox',           # PostgreSQL password
     'HOST': 'localhost',      # Database server
     'PORT': '',               # Database port (leave blank for default)
     'CONN_MAX_AGE': 300,      # Max database connection age
@@ -53,7 +53,7 @@ REDIS = {
 # For optimal security, SECRET_KEY should be at least 50 characters in length and contain a mix of letters, numbers, and
 # symbols. NetBox will not run without this defined. For more information, see
 # https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-SECRET_KEY
-SECRET_KEY = ''
+SECRET_KEY = 'RLdsmU+(P9ozt!jTkbpJ5XVFvIaA$GY3Drn6#-Z_%28Me01gEq'
 
 
 #########################
