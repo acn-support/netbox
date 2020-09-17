@@ -5,11 +5,11 @@ from dcim.models import Device, DeviceRole, DeviceType, Manufacturer, Site
 from extras.scripts import *
 
 
-class NewBranchScript(Script):
+class createSite(Script):
 
     class Meta:
-        name = "New Branch"
-        description = "Provision a new branch site"
+        name = "Новый узел связи"
+        description = "Создание нового узла связи"
         field_order = ['site_name', 'switch_count', 'switch_model']
 
     site_name = StringVar(

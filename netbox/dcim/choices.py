@@ -14,11 +14,11 @@ class SiteStatusChoices(ChoiceSet):
     STATUS_RETIRED = 'retired'
 
     CHOICES = (
-        (STATUS_PLANNED, 'Planned'),
-        (STATUS_STAGING, 'Staging'),
-        (STATUS_ACTIVE, 'Active'),
-        (STATUS_DECOMMISSIONING, 'Decommissioning'),
-        (STATUS_RETIRED, 'Retired'),
+        (STATUS_PLANNED, 'Планируется'),
+        (STATUS_STAGING, 'Ввод в работу'),
+        (STATUS_ACTIVE, 'В работе'),
+        (STATUS_DECOMMISSIONING, 'Вывод из работы'),
+        (STATUS_RETIRED, 'В архиве'),
     )
 
 
@@ -28,33 +28,25 @@ class SiteStatusChoices(ChoiceSet):
 
 class RackTypeChoices(ChoiceSet):
 
-    TYPE_2POST = '2-post-frame'
-    TYPE_4POST = '4-post-frame'
-    TYPE_CABINET = '4-post-cabinet'
-    TYPE_WALLFRAME = 'wall-frame'
-    TYPE_WALLCABINET = 'wall-cabinet'
+    TYPE_STORE = 'virtual-storage'
+    TYPE_ABONS = 'virtual-abonents'
+    TYPE_STATION = 'station'
 
     CHOICES = (
-        (TYPE_2POST, '2-post frame'),
-        (TYPE_4POST, '4-post frame'),
-        (TYPE_CABINET, '4-post cabinet'),
-        (TYPE_WALLFRAME, 'Wall-mounted frame'),
-        (TYPE_WALLCABINET, 'Wall-mounted cabinet'),
+        (TYPE_STATION, 'Стойки на узлах связи'),
+        (TYPE_ABONS, 'Абонентские устройства'),
+        (TYPE_STORE, 'Хранилище'),
     )
 
 
 class RackWidthChoices(ChoiceSet):
 
-    WIDTH_10IN = 10
     WIDTH_19IN = 19
-    WIDTH_21IN = 21
-    WIDTH_23IN = 23
+    WIDTH_10IN = 10
 
     CHOICES = (
-        (WIDTH_10IN, '10 inches'),
-        (WIDTH_19IN, '19 inches'),
-        (WIDTH_21IN, '21 inches'),
-        (WIDTH_23IN, '23 inches'),
+        (WIDTH_19IN, '19″'),
+        (WIDTH_10IN, '10″'),
     )
 
 
@@ -67,11 +59,11 @@ class RackStatusChoices(ChoiceSet):
     STATUS_DEPRECATED = 'deprecated'
 
     CHOICES = (
-        (STATUS_RESERVED, 'Reserved'),
-        (STATUS_AVAILABLE, 'Available'),
-        (STATUS_PLANNED, 'Planned'),
-        (STATUS_ACTIVE, 'Active'),
-        (STATUS_DEPRECATED, 'Deprecated'),
+        (STATUS_RESERVED, 'В резерве'),
+        (STATUS_AVAILABLE, 'Доступен'),
+        (STATUS_PLANNED, 'Планируется'),
+        (STATUS_ACTIVE, 'В работе'),
+        (STATUS_DEPRECATED, 'К удалению'),
     )
 
 
@@ -81,8 +73,8 @@ class RackDimensionUnitChoices(ChoiceSet):
     UNIT_INCH = 'in'
 
     CHOICES = (
-        (UNIT_MILLIMETER, 'Millimeters'),
-        (UNIT_INCH, 'Inches'),
+        (UNIT_MILLIMETER, 'мм'),
+        (UNIT_INCH, 'дюйм'),
     )
 
 
@@ -107,8 +99,8 @@ class SubdeviceRoleChoices(ChoiceSet):
     ROLE_CHILD = 'child'
 
     CHOICES = (
-        (ROLE_PARENT, 'Parent'),
-        (ROLE_CHILD, 'Child'),
+        (ROLE_PARENT, 'Главное'),
+        (ROLE_CHILD, 'Подчинённое'),
     )
 
 
@@ -139,7 +131,7 @@ class DeviceStatusChoices(ChoiceSet):
 
     CHOICES = (
         (STATUS_INVENTORY, 'На складе'), # 
-        (STATUS_PLANNED, 'Запланировано'),
+        (STATUS_PLANNED, 'Планируется'),
         (STATUS_STAGED, 'Ввод в работу'),
         (STATUS_ACTIVE, 'В работе'),
         (STATUS_DECOMMISSIONING, 'Вывод из работы'),
@@ -572,6 +564,7 @@ class PowerOutletFeedLegChoices(ChoiceSet):
 class InterfaceTypeChoices(ChoiceSet):
 
     # Virtual
+    TYPE_PON = 'pon'
     TYPE_VIRTUAL = 'virtual'
     TYPE_LAG = 'lag'
 
@@ -660,19 +653,28 @@ class InterfaceTypeChoices(ChoiceSet):
     TYPE_SUMMITSTACK256 = 'extreme-summitstack-256'
     TYPE_SUMMITSTACK512 = 'extreme-summitstack-512'
 
-    # Other
-    TYPE_OTHER = 'other'
+    # Оптика
+    TYPE_SC_UPC = 'sc-upc'
+    TYPE_SC_APC = 'sc-apc'
 
     CHOICES = (
         (
             'Virtual interfaces',
             (
+                (TYPE_PON, 'PON'),
                 (TYPE_VIRTUAL, 'Virtual'),
                 (TYPE_LAG, 'Link Aggregation Group (LAG)'),
             ),
         ),
         (
-            'Ethernet (fixed)',
+            'Оптика',
+            (
+                (TYPE_SC_UPC, 'SC/UPC'),
+                (TYPE_SC_APC, 'SC/APC'),
+            )
+        ),
+        (
+            'Ethernet',
             (
                 (TYPE_100ME_FIXED, '100BASE-TX (10/100ME)'),
                 (TYPE_1GE_FIXED, '1000BASE-T (1GE)'),
@@ -683,7 +685,7 @@ class InterfaceTypeChoices(ChoiceSet):
             )
         ),
         (
-            'Ethernet (modular)',
+            'Ethernet (модуль)',
             (
                 (TYPE_1GE_GBIC, 'GBIC (1GE)'),
                 (TYPE_1GE_SFP, 'SFP (1GE)'),
@@ -717,26 +719,6 @@ class InterfaceTypeChoices(ChoiceSet):
             )
         ),
         (
-            'Cellular',
-            (
-                (TYPE_GSM, 'GSM'),
-                (TYPE_CDMA, 'CDMA'),
-                (TYPE_LTE, 'LTE'),
-            )
-        ),
-        (
-            'SONET',
-            (
-                (TYPE_SONET_OC3, 'OC-3/STM-1'),
-                (TYPE_SONET_OC12, 'OC-12/STM-4'),
-                (TYPE_SONET_OC48, 'OC-48/STM-16'),
-                (TYPE_SONET_OC192, 'OC-192/STM-64'),
-                (TYPE_SONET_OC768, 'OC-768/STM-256'),
-                (TYPE_SONET_OC1920, 'OC-1920/STM-640'),
-                (TYPE_SONET_OC3840, 'OC-3840/STM-1234'),
-            )
-        ),
-        (
             'FibreChannel',
             (
                 (TYPE_1GFC_SFP, 'SFP (1GFC)'),
@@ -749,20 +731,6 @@ class InterfaceTypeChoices(ChoiceSet):
             )
         ),
         (
-            'InfiniBand',
-            (
-                (TYPE_INFINIBAND_SDR, 'SDR (2 Gbps)'),
-                (TYPE_INFINIBAND_DDR, 'DDR (4 Gbps)'),
-                (TYPE_INFINIBAND_QDR, 'QDR (8 Gbps)'),
-                (TYPE_INFINIBAND_FDR10, 'FDR10 (10 Gbps)'),
-                (TYPE_INFINIBAND_FDR, 'FDR (13.5 Gbps)'),
-                (TYPE_INFINIBAND_EDR, 'EDR (25 Gbps)'),
-                (TYPE_INFINIBAND_HDR, 'HDR (50 Gbps)'),
-                (TYPE_INFINIBAND_NDR, 'NDR (100 Gbps)'),
-                (TYPE_INFINIBAND_XDR, 'XDR (250 Gbps)'),
-            )
-        ),
-        (
             'Serial',
             (
                 (TYPE_T1, 'T1 (1.544 Mbps)'),
@@ -771,26 +739,7 @@ class InterfaceTypeChoices(ChoiceSet):
                 (TYPE_E3, 'E3 (34 Mbps)'),
             )
         ),
-        (
-            'Stacking',
-            (
-                (TYPE_STACKWISE, 'Cisco StackWise'),
-                (TYPE_STACKWISE_PLUS, 'Cisco StackWise Plus'),
-                (TYPE_FLEXSTACK, 'Cisco FlexStack'),
-                (TYPE_FLEXSTACK_PLUS, 'Cisco FlexStack Plus'),
-                (TYPE_JUNIPER_VCP, 'Juniper VCP'),
-                (TYPE_SUMMITSTACK, 'Extreme SummitStack'),
-                (TYPE_SUMMITSTACK128, 'Extreme SummitStack-128'),
-                (TYPE_SUMMITSTACK256, 'Extreme SummitStack-256'),
-                (TYPE_SUMMITSTACK512, 'Extreme SummitStack-512'),
-            )
-        ),
-        (
-            'Other',
-            (
-                (TYPE_OTHER, 'Other'),
-            )
-        ),
+
     )
 
 
