@@ -4,6 +4,7 @@ from dcim.choices import DeviceStatusChoices, SiteStatusChoices
 from dcim.models import Device, DeviceRole, DeviceType, Manufacturer, Site
 from extras.scripts import *
 
+name = 'Узлы связи'
 
 class createSite(Script):
 
@@ -68,3 +69,4 @@ class createSite(Script):
             output.append(','.join(attrs))
 
         return '\n'.join(output)
+
