@@ -4,14 +4,15 @@ from dcim.choices import DeviceStatusChoices, SiteStatusChoices
 from dcim.models import Device, DeviceRole, DeviceType, Manufacturer, Site
 from extras.scripts import *
 
-name = 'Узлы связи'
+name = 'Управление узлами связи'
 
 class createSite(Script):
 
     class Meta:
-        name = "Новый узел связи"
+        name = "Создать узел связи"
         description = "Создание нового узла связи"
         field_order = ['site_name', 'switch_count', 'switch_model']
+        commit_default = False
 
     site_name = StringVar(
         description="Name of the new site"
@@ -69,4 +70,45 @@ class createSite(Script):
             output.append(','.join(attrs))
 
         return '\n'.join(output)
+
+class addCoreSwitch(Script):
+    class Meta:
+        name = "Добавить switch core"
+        description = "Добавление маршрутизатор ядра"
+        commit_default = False
+
+    
+    def run(self, data, commit):
+        return 'Добавление ядерной циски'
+
+class addAccessSwitch(Script):
+    class Meta:
+        name = "Добавить switch access"
+        description = "Добавление маршрутизатора доступа"
+        commit_default = False
+
+    
+    def run(self, data, commit):
+        return 'Добавление маршрутизатора доступа'
+
+class addManagementSwitch(Script):
+    class Meta:
+        name = "Добавить switch management"
+        description = "Добавление маршрутизатора управления"
+        commit_default = False
+
+    
+    def run(self, data, commit):
+        return 'Добавление  маршрутизатора управления'
+
+class addOlt(Script):
+    class Meta:
+        name = "Добавить OLT"
+        description = "Добавление линейного терминала PON"
+        commit_default = False
+
+    
+    def run(self, data, commit):
+        return 'Добавление  линейного терминала PON'
+
 
