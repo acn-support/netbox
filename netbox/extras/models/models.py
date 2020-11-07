@@ -648,7 +648,7 @@ class JobResult(models.Model):
         duration = self.completed - self.created
         minutes, seconds = divmod(duration.total_seconds(), 60)
 
-        return f"{int(minutes)} minutes, {seconds:.2f} seconds"
+        return f"{int(minutes)} минут, {seconds:.2f} секунд"
 
     def set_status(self, status):
         """

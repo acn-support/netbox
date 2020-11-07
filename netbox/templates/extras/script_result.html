@@ -32,9 +32,9 @@
     </ul>
     <div class="tab-content">
         <p>
-            Run: <strong>{{ result.created }}</strong>
+            Запущен: <strong>{{ result.created }}</strong>
             {% if result.completed %}
-                Duration: <strong>{{ result.duration }}</strong>
+                Продолжительность: <strong>{{ result.duration }}</strong>
             {% else %}
                 <img id="pending-result-loader" src="{% static 'img/ajax-loader.gif' %}" />
             {% endif %}
